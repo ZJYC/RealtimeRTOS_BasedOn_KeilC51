@@ -1,0 +1,791 @@
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.01
+OBJECT MODULE PLACED IN .\mess\OS_ASM.obj
+ASSEMBLER INVOKED BY: D:\software install\NEW\keil 4\C51\BIN\A51.EXE ..\ZOS-I\source\CPU\OS_ASM.a51 SET(SMALL) DEBUG PRI
+                      NT(.\OS_ASM.lst) OBJECT(.\mess\OS_ASM.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     
+                       2     $nomod51 
+                       3     
+                       4     NAME                                    OS_ASM
+                       5     
+                       6     ;CPU_REG_SIZE                   EQU                     13
+  0002                 7     CPU_XDATA_P_SIZE                EQU                     2
+                       8     
+  0080                 9     P0                                              DATA    080H
+  0090                10     P1                                              DATA    090H
+  00A0                11     P2                                              DATA    0A0H
+  00B0                12     P3                                              DATA    0B0H
+  00A7                13     Switch_Monitoring               BIT     0A0H.7
+  00B4                14     T0                                              BIT     0B0H.4
+  00D6                15     AC                                              BIT     0D0H.6
+  00B5                16     T1                                              BIT     0B0H.5
+  0090                17     T2                                              BIT     090H.0
+  00AF                18     EA                                              BIT     0A8H.7
+  00A6                19     Switch_Remote_Control   BIT     0A0H.6
+  00A8                20     IE                                              DATA    0A8H
+  00CE                21     EXF2                                    BIT     0C8H.6
+  00B7                22     RD                                              BIT     0B0H.7
+  00AC                23     ES                                              BIT     0A8H.4
+  00B8                24     IP                                              DATA    0B8H
+  0098                25     RI                                              BIT     098H.0
+  00B2                26     INT0                                    BIT     0B0H.2
+  00D7                27     CY                                              BIT     0D0H.7
+  0099                28     TI                                              BIT     098H.1
+  00B3                29     INT1                                    BIT     0B0H.3
+  00CB                30     RCAP2H                                  DATA    0CBH
+  00BC                31     PS                                              BIT     0B8H.4
+  0081                32     SP                                              DATA    081H
+  0091                33     T2EX                                    BIT     090H.1
+  00D2                34     OV                                              BIT     0D0H.2
+  00CA                35     RCAP2L                                  DATA    0CAH
+  00C9                36     C_T2                                    BIT     0C8H.1
+  00B6                37     WR                                              BIT     0B0H.6
+  00CD                38     RCLK                                    BIT     0C8H.5
+  00CC                39     TCLK                                    BIT     0C8H.4
+  0099                40     SBUF                                    DATA    099H
+  0087                41     PCON                                    DATA    087H
+  0098                42     SCON                                    DATA    098H
+  0089                43     TMOD                                    DATA    089H
+  0088                44     TCON                                    DATA    088H
+  0089                45     IE0                                             BIT     088H.1
+  008B                46     IE1                                             BIT     088H.3
+  00F0                47     B                                               DATA    0F0H
+  00C8                48     CP_RL2                                  BIT     0C8H.0
+  00E0                49     ACC     DATA                            0E0H
+  00A9                50     ET0                                             BIT     0A8H.1
+  00AB                51     ET1                                             BIT     0A8H.3
+  008D                52     TF0                                             BIT     088H.5
+  0090                53     Speed_Control_1                 BIT     090H.0
+  00AD                54     ET2                                             BIT     0A8H.5
+  008F                55     TF1                                             BIT     088H.7
+  0091                56     Speed_Control_2                 BIT     090H.1
+  00CF                57     TF2                                             BIT     0C8H.7
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE     2
+
+  009A                58     RB8                                             BIT     098H.2
+  008C                59     TH0                                             DATA    08CH
+  0092                60     Speed_Control_3                 BIT     090H.2
+  00A8                61     EX0                                             BIT     0A8H.0
+  0088                62     IT0                                             BIT     088H.0
+  008D                63     TH1                                             DATA    08DH
+  009B                64     TB8                                             BIT     098H.3
+  00AA                65     EX1                                             BIT     0A8H.2
+  008A                66     IT1                                             BIT     088H.2
+  00CD                67     TH2                                             DATA    0CDH
+  00D0                68     P                                               BIT     0D0H.0
+  009F                69     SM0                                             BIT     098H.7
+  008A                70     TL0                                             DATA    08AH
+  009E                71     SM1                                             BIT     098H.6
+  008B                72     TL1                                             DATA    08BH
+  009D                73     SM2                                             BIT     098H.5
+  00CC                74     TL2                                             DATA    0CCH
+  00B9                75     PT0                                             BIT     0B8H.1
+  00BB                76     PT1                                             BIT     0B8H.3
+  00D3                77     RS0                                             BIT     0D0H.3
+  00BD                78     PT2                                             BIT     0B8H.5
+  008C                79     TR0                                             BIT     088H.4
+  00D4                80     RS1                                             BIT     0D0H.4
+  008E                81     TR1                                             BIT     088H.6
+  00CA                82     TR2                                             BIT     0C8H.2
+  00B8                83     PX0                                             BIT     0B8H.0
+  00BA                84     PX1                                             BIT     0B8H.2
+  0083                85     DPH                                             DATA    083H
+  0082                86     DPL                                             DATA    082H
+  00CB                87     EXEN2                                   BIT     0C8H.3
+  009C                88     REN                                             BIT     098H.4
+  00C8                89     T2CON                                   DATA    0C8H
+  00B0                90     RXD                                             BIT     0B0H.0
+  00B1                91     TXD                                             BIT     0B0H.1
+  00D5                92     F0                                              BIT     0D0H.5
+  00D0                93     PSW                                             DATA    0D0H
+                      94     
+                      95     ?PR?OS_TaskSwitch?OS_ASM                                SEGMENT CODE 
+                      96     ?PR?OS_TaskSwitch_Isr?OS_ASM                    SEGMENT CODE
+                      97     ?PR?Extern_0_Int_?OS_ASM                                SEGMENT CODE 
+                      98     ?PR?Extern_1_Int_?OS_ASM                                SEGMENT CODE 
+                      99     ?PR?Serial_Int_?OS_ASM                                  SEGMENT CODE 
+                     100     ?PR?Timer_1_Int_?OS_ASM                                 SEGMENT CODE  
+                     101     EXTRN                                                                   XDATA (OS_TaskStack
+                             Addr)
+                     102     EXTRN                                                                   XDATA (OS_TaskStatu
+                             s)
+                     103     EXTRN                                                                   XDATA (OS_TaskCurLe
+                             ngth)
+                     104     EXTRN                                                                   XDATA (OS_TaskReady
+                             List)
+                     105     EXTRN                                                                   XDATA (OS_TaskRegGr
+                             oup)
+                     106     EXTRN                                                                   DATA (OS_CurTaskNum
+                             )
+                     107     EXTRN                                                                   DATA (OS_NexTaskNum
+                             )
+                     108     EXTRN                                                                   DATA (OS_SPDefaultV
+                             alue)
+                     109     EXTRN                                                                   DATA (TH0_Reload)
+                     110     EXTRN                                                                   DATA (TL0_Reload)
+                     111     EXTRN                                                                   DATA (OsMaxNumOfTas
+                             k)
+                     112     EXTRN                                                                   DATA (OsCpuCharSize
+                             )
+                     113     EXTRN                                                                   DATA (OS_RegSize)
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE     3
+
+                     114     EXTRN                                                                   CODE (?C?PSTPTR)
+                     115     EXTRN                                                                   CODE (TickTask)
+                     116     PUBLIC                                                                  OS_TaskSwitch_Isr
+                     117     PUBLIC                                                                  OS_TaskSwitch
+                     118     PUBLIC                                                                  Extern_0_Int_
+                     119     PUBLIC                                                                  Extern_1_Int_
+                     120     PUBLIC                                                                  Serial_Int_
+                     121     PUBLIC                                                                  Timer_1_Int_
+                     122     EXTRN                                                                   CODE (Extern_0_Int)
+                     123     EXTRN                                                                   CODE (Extern_1_Int)
+                     124     EXTRN                                                                   CODE (Serial_Int)
+                     125     EXTRN                                                                   CODE (Timer_1_Int)
+                     126     EXTRN                                                                   CODE (TaskSwitch_HO
+                             OK)
+                     127     DISABLE_ALL_INT MACRO                                                   ;¹Ø±Õ×ÜÖÐ¶Ïºê
+                     128             CLR             EA
+                     129     ENDM
+                     130     ENABLE_ALL_INT  MACRO                                                   ;¿ªÆô×ÜÖÐ¶Ïºê
+                     131             SETB    EA
+                     132     ENDM
+                     133     
+                     134     PUSH_ALL_REG    MACRO                                                   ;Ñ¹Õ»ºê
+                     135             PUSH    ACC
+                     136             PUSH    B
+                     137             PUSH    DPH
+                     138             PUSH    DPL
+                     139             PUSH    PSW
+                     140             PUSH    AR0
+                     141             PUSH    AR1
+                     142             PUSH    AR2
+                     143             PUSH    AR3
+                     144             PUSH    AR4
+                     145             PUSH    AR5
+                     146             PUSH    AR6
+                     147             PUSH    AR7
+                     148     ENDM
+                     149     
+                     150     POP_ALL_REG             MACRO                                                   ;³öÕ»ºê
+                     151             POP             AR7
+                     152             POP             AR6
+                     153             POP             AR5
+                     154             POP             AR4
+                     155             POP             AR3
+                     156             POP             AR2
+                     157             POP             AR1
+                     158             POP             AR0
+                     159             POP             PSW
+                     160             POP             DPL
+                     161             POP             DPH
+                     162             POP             B
+                     163             POP             ACC
+                     164     ENDM
+                     165     
+                     166     
+                     167     TIMER_INT_RELOAD        MACRO                                           ;¶¨Ê±Æ÷ÖØ×°ºê
+                     168             MOV             TH0,TH0_Reload
+                     169             MOV             TL0,TL0_Reload
+                     170     ENDM
+                     171     
+                     172     SAVE_CONTEXT    MACRO                                                   ;±£´æÉÏÎÄºê
+                     173             LCALL   GET_REG_GROUP_ADDR
+                     174             MOV             A,SP
+                     175             SUBB    A,OS_RegSize
+                     176             MOV             R0,A
+                     177             INC             R0
+                     178             MOV             R1,OS_RegSize
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE     4
+
+                     179             LCALL   COPY_DATA_TOX
+                     180             MOV             R1,#CPU_XDATA_P_SIZE
+                     181             LCALL   GET_POINT_ARRAY
+                     182             MOV             A,SP
+                     183             SUBB    A,OS_RegSize
+                     184             MOV             B,OS_SPDefaultValue
+                     185             SUBB    A,B
+                     186             MOV             R1,A
+                     187             MOV             B,R1
+                     188             MOV             R0,OS_SPDefaultValue
+                     189             INC             R0
+                     190             LCALL   COPY_DATA_TOX
+                     191             MOV             R1,B
+                     192             LCALL   SAVE_STACK_LENGTH
+                     193     ENDM
+                     194     
+                     195     RESTORE_CONTEXT         MACRO                                           ;»Ö¸´ÏÂÎÄºê
+                     196             LCALL   GET_STACK_LENGTH
+                     197             LCALL   GET_POINT_ARRAY
+                     198             MOV             R0,OS_SPDefaultValue
+                     199             CLR             A                                                                  
+                                  ;¼ÆËã¶ÑÕ»µÄ°²È«Î»ÖÃ£¬·ÀÖ¹×ÔÉ±
+                     200             ADD             A,R1                                                            ;Ëù
+                             Î½×ÔÉ±£¬¼´º¯ÊÐÞ¸ÄÁË×Ô¼ºµÄ¶ÑÕ»ÀïµÄPCÖ¸Õë
+                     201             ADD             A,OS_RegSize                                            ;µ¼ÖÂº¯Ê²»Ä
+                             Ü·µ»Ø£¬´Ë´¦¾ÍÊÇÒª¼ÆËãºó
+                     202             ADD             A,R0                                                            ;µÃ
+                             µ½Ò»¸ö²»»á±»ÐÞ¸ÄµÄ¶ÑÕ»µØÖ·£¬È·±£°²È«
+                     203             MOV             SP,A                                                            ;´Ë
+                             ´¦¶ÑÕ»ÒªÖØÐÂÉè¼ÆÎ»ÖÃ
+                     204             INC             R0
+                     205             LCALL   COPY_DATA_FX                                            ;<-×ÔÉ±Ö÷ÒªÊÇÕâ¸öº¯
+                             ÊÔì³ÉµÄ
+                     206             LCALL   GET_REG_GROUP_ADDR
+                     207             MOV             R1,OS_RegSize
+                     208             LCALL   COPY_DATA_FX
+                     209             DEC             R0
+                     210             MOV             SP,R0
+                     211     ENDM
+                     212     
+                     213     LOAD_NEXT_PRIO          MACRO                                           ;×°ÈëÏÂÒ»ÓÅÏÈ¼¶
+                     214             PUSH    ACC
+                     215             MOV             A,OS_NexTaskNum
+                     216             MOV             OS_CurTaskNum,A
+                     217             POP             ACC
+                     218     ENDM
+                     219     
+----                 220     RSEG    ?PR?OS_TaskSwitch?OS_ASM
+0000                 221     OS_TaskSwitch:
+                     222     USING   0
+                     223                     DISABLE_ALL_INT                                                         ;ÆÁ
+                             ±ÎÖÐ¶Ï
+                     225                     PUSH_ALL_REG                                                    ;Ñ¹Õ»±£´æ
+001C 120000   F      239                     LCALL   TaskSwitch_HOOK                                 ;µ÷ÓÃ¹³×Óº¯Ê
+001F 120000   F      240                     LCALL   FIND_NEXT_TASK                                  ;Ñ°ÕÒÏÂÒ»ÓÅÏÈ¼¶ÈÎÎñ
+0022 E500     F      241                     MOV             A,OS_CurTaskNum                                 ;ÅÐ¶ÏÊÇ·ñÐè
+                             ÒªÈÎÎñÇÐ»»
+0024 B50003   F      242                     CJNE    A,OS_NexTaskNum,TASK_SWITCH_1   ;ÏÂÒ»¾ÍÐ÷ÈÎÎñ²»ÊÇµ±Ç°ÈÎÎñ£¬ÐèÇÐ»»
+0027 020000   F      243                     LJMP    TASK_BACK_1                                             ;ÏÂÒ»¾ÍÐ÷ÈÎ
+                             ÎñÊÇµ±Ç°ÈÎÎñ£¬²»ÓÃÇÐ»»
+002A                 244                     TASK_SWITCH_1:                                                  ;¿ªÊ¼ÈÎÎñÇÐ
+                             »»
+                     245                     SAVE_CONTEXT                                                    ;±£´æÉÏÎÄ
+                     266                     LOAD_NEXT_PRIO                                                  ;ÓÅÏÈ¼¶±£´æ
+                     271                     RESTORE_CONTEXT                                                 ;»Ö¸´ÏÂÎÄ
+007A                 287                     TASK_BACK_1:                                                    ;ÈÎÎñ²»ÓÃÇÐ
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE     5
+
+                             »»Ö±½Ó·µ»Ø
+                     288                     POP_ALL_REG                                                             ;µ¯
+                             Õ»»Ö¸´
+                     302                     ENABLE_ALL_INT                                                          ;´ò
+                             ¿ªÖÐ¶Ï
+0096 22              304     RET
+----                 305     CSEG    AT      00003H
+0003 020000   F      306             LJMP    Extern_0_Int_
+----                 307     CSEG    AT      0000BH
+000B 020000   F      308             LJMP    OS_TaskSwitch_Isr
+----                 309     CSEG    AT      00013H
+0013 020000   F      310             LJMP    Extern_1_Int_
+----                 311     CSEG    AT      0001BH 
+001B 020000   F      312             LJMP    Timer_1_Int_
+----                 313     CSEG    AT      00023H
+0023 020000   F      314             LJMP    Serial_Int_
+----                 315     RSEG    ?PR?OS_TaskSwitch_Isr?OS_ASM
+0000                 316     OS_TaskSwitch_Isr:
+                     317     USING   0
+                     318                     DISABLE_ALL_INT                                                         ;ÆÁ
+                             ±ÎÖÐ¶Ï
+                     320                     TIMER_INT_RELOAD                                                ;¶¨Ê±Æ÷ÖØ×°
+                     323                     PUSH_ALL_REG                                                    ;Ñ¹Õ»±£´æ
+0022 120000   F      337                     LCALL   TickTask                                                ;Ö´ÐÐµÎ´ðÈÎ
+                             Îñ
+0025 120000   F      338                     LCALL   FIND_NEXT_TASK                                  ;Ñ°ÕÒÏÂÒ»ÓÅÏÈ¼¶ÈÎÎñ
+0028 E500     F      339                     MOV             A,OS_CurTaskNum                                 ;ÅÐ¶ÏÊÇ·ñÐè
+                             ÒªÈÎÎñÇÐ»»
+002A B50003   F      340                     CJNE    A,OS_NexTaskNum,TASK_SWITCH_2   ;ÏÂÒ»¾ÍÐ÷ÈÎÎñ²»ÊÇµ±Ç°ÈÎÎñ£¬ÐèÇÐ»»
+002D 020000   F      341                     LJMP    TASK_BACK_2                                             ;ÏÂÒ»¾ÍÐ÷ÈÎ
+                             ÎñÊÇµ±Ç°ÈÎÎñ£¬²»ÓÃÇÐ»»
+0030                 342                     TASK_SWITCH_2:                                                  ;¿ªÊ¼ÈÎÎñÇÐ
+                             »»
+                     343                     SAVE_CONTEXT                                                    ;±£´æÉÏÎÄ
+                     364                     LOAD_NEXT_PRIO                                                  ;ÓÅÏÈ¼¶±£´æ
+                     369                     RESTORE_CONTEXT                                                 ;»Ö¸´ÏÂÎÄ
+0080                 385                     TASK_BACK_2:                                                    ;ÈÎÎñ²»ÓÃÇÐ
+                             »»Ö±½Ó·µ»Ø
+                     386                     POP_ALL_REG                                                             ;µ¯
+                             Õ»»Ö¸´
+                     400                     ENABLE_ALL_INT                                                          ;´ò
+                             ¿ªÖÐ¶Ï
+009C 32              402     RETI
+----                 403     RSEG    ?PR?Extern_0_Int_?OS_ASM
+0000                 404     Extern_0_Int_:
+                     405     USING   0
+                     406                     DISABLE_ALL_INT                                                         ;ÆÁ
+                             ±ÎÖÐ¶Ï
+                     408                     PUSH_ALL_REG                                                    ;Ñ¹Õ»±£´æ
+001C 120000   F      422                     LCALL   Extern_0_Int
+001F 120000   F      423                     LCALL   FIND_NEXT_TASK                                  ;Ñ°ÕÒÏÂÒ»ÓÅÏÈ¼¶ÈÎÎñ
+0022 E500     F      424                     MOV             A,OS_CurTaskNum                                 ;ÅÐ¶ÏÊÇ·ñÐè
+                             ÒªÈÎÎñÇÐ»»
+0024 B50003   F      425                     CJNE    A,OS_NexTaskNum,TASK_SWITCH_3   ;ÏÂÒ»¾ÍÐ÷ÈÎÎñ²»ÊÇµ±Ç°ÈÎÎñ£¬ÐèÇÐ»»
+0027 020000   F      426                     LJMP    TASK_BACK_3                                             ;ÏÂÒ»¾ÍÐ÷ÈÎ
+                             ÎñÊÇµ±Ç°ÈÎÎñ£¬²»ÓÃÇÐ»»
+002A                 427                     TASK_SWITCH_3:                                                  ;¿ªÊ¼ÈÎÎñÇÐ
+                             »»
+                     428                     SAVE_CONTEXT                                                    ;±£´æÉÏÎÄ
+                     449                     LOAD_NEXT_PRIO                                                  ;ÓÅÏÈ¼¶±£´æ
+                     454                     RESTORE_CONTEXT                                                 ;»Ö¸´ÏÂÎÄ
+007A                 470                     TASK_BACK_3:                                                    ;ÈÎÎñ²»ÓÃÇÐ
+                             »»Ö±½Ó·µ»Ø
+                     471                     POP_ALL_REG                                                             ;µ¯
+                             Õ»»Ö¸´
+                     485                     ENABLE_ALL_INT                                                          ;´ò
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE     6
+
+                             ¿ªÖÐ¶Ï
+0096 32              487     RETI
+----                 488     RSEG    ?PR?Extern_1_Int_?OS_ASM
+0000                 489     Extern_1_Int_:
+                     490     USING   0
+                     491                     DISABLE_ALL_INT                                                         ;ÆÁ
+                             ±ÎÖÐ¶Ï
+                     493                     PUSH_ALL_REG                                                    ;Ñ¹Õ»±£´æ
+001C 120000   F      507                     LCALL   Extern_1_Int
+001F 120000   F      508                     LCALL   FIND_NEXT_TASK                                  ;Ñ°ÕÒÏÂÒ»ÓÅÏÈ¼¶ÈÎÎñ
+0022 E500     F      509                     MOV             A,OS_CurTaskNum                                 ;ÅÐ¶ÏÊÇ·ñÐè
+                             ÒªÈÎÎñÇÐ»»
+0024 B50003   F      510                     CJNE    A,OS_NexTaskNum,TASK_SWITCH_4   ;ÏÂÒ»¾ÍÐ÷ÈÎÎñ²»ÊÇµ±Ç°ÈÎÎñ£¬ÐèÇÐ»»
+0027 020000   F      511                     LJMP    TASK_BACK_4                                             ;ÏÂÒ»¾ÍÐ÷ÈÎ
+                             ÎñÊÇµ±Ç°ÈÎÎñ£¬²»ÓÃÇÐ»»
+002A                 512                     TASK_SWITCH_4:                                                  ;¿ªÊ¼ÈÎÎñÇÐ
+                             »»
+                     513                     SAVE_CONTEXT                                                    ;±£´æÉÏÎÄ
+                     534                     LOAD_NEXT_PRIO                                                  ;ÓÅÏÈ¼¶±£´æ
+                     539                     RESTORE_CONTEXT                                                 ;»Ö¸´ÏÂÎÄ
+007A                 555                     TASK_BACK_4:                                                    ;ÈÎÎñ²»ÓÃÇÐ
+                             »»Ö±½Ó·µ»Ø
+                     556                     POP_ALL_REG                                                             ;µ¯
+                             Õ»»Ö¸´
+                     570                     ENABLE_ALL_INT                                                          ;´ò
+                             ¿ªÖÐ¶Ï
+                     572     
+0096 32              573     RETI
+----                 574     RSEG    ?PR?Serial_Int_?OS_ASM
+0000                 575     Serial_Int_:
+                     576     USING   0
+                     577                     DISABLE_ALL_INT                                                         ;ÆÁ
+                             ±ÎÖÐ¶Ï
+                     579                     PUSH_ALL_REG                                                    ;Ñ¹Õ»±£´æ
+001C 120000   F      593                     LCALL   Serial_Int
+001F 120000   F      594                     LCALL   FIND_NEXT_TASK                                  ;Ñ°ÕÒÏÂÒ»ÓÅÏÈ¼¶ÈÎÎñ
+0022 E500     F      595                     MOV             A,OS_CurTaskNum                                 ;ÅÐ¶ÏÊÇ·ñÐè
+                             ÒªÈÎÎñÇÐ»»
+0024 B50003   F      596                     CJNE    A,OS_NexTaskNum,TASK_SWITCH_5   ;ÏÂÒ»¾ÍÐ÷ÈÎÎñ²»ÊÇµ±Ç°ÈÎÎñ£¬ÐèÇÐ»»
+0027 020000   F      597                     LJMP    TASK_BACK_5                                             ;ÏÂÒ»¾ÍÐ÷ÈÎ
+                             ÎñÊÇµ±Ç°ÈÎÎñ£¬²»ÓÃÇÐ»»
+002A                 598                     TASK_SWITCH_5:                                                  ;¿ªÊ¼ÈÎÎñÇÐ
+                             »»
+                     599                     SAVE_CONTEXT                                                    ;±£´æÉÏÎÄ
+                     620                     LOAD_NEXT_PRIO                                                  ;ÓÅÏÈ¼¶±£´æ
+                     625                     RESTORE_CONTEXT                                                 ;»Ö¸´ÏÂÎÄ
+007A                 641                     TASK_BACK_5:                                                    ;ÈÎÎñ²»ÓÃÇÐ
+                             »»Ö±½Ó·µ»Ø
+                     642                     POP_ALL_REG                                                             ;µ¯
+                             Õ»»Ö¸´
+                     656                     ENABLE_ALL_INT                                                          ;´ò
+                             ¿ªÖÐ¶Ï
+                     658     
+0096 32              659     RETI
+----                 660     RSEG    ?PR?Timer_1_Int_?OS_ASM
+0000                 661     Timer_1_Int_:
+                     662     USING   0
+                     663                     DISABLE_ALL_INT                                                         ;ÆÁ
+                             ±ÎÖÐ¶Ï
+                     665                     PUSH_ALL_REG                                                    ;Ñ¹Õ»±£´æ
+001C 120000   F      679                     LCALL   Timer_1_Int
+001F 120000   F      680                     LCALL   FIND_NEXT_TASK                                  ;Ñ°ÕÒÏÂÒ»ÓÅÏÈ¼¶ÈÎÎñ
+0022 E500     F      681                     MOV             A,OS_CurTaskNum                                 ;ÅÐ¶ÏÊÇ·ñÐè
+                             ÒªÈÎÎñÇÐ»»
+0024 B50003   F      682                     CJNE    A,OS_NexTaskNum,TASK_SWITCH_6   ;ÏÂÒ»¾ÍÐ÷ÈÎÎñ²»ÊÇµ±Ç°ÈÎÎñ£¬ÐèÇÐ»»
+0027 020000   F      683                     LJMP    TASK_BACK_6                                             ;ÏÂÒ»¾ÍÐ÷ÈÎ
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE     7
+
+                             ÎñÊÇµ±Ç°ÈÎÎñ£¬²»ÓÃÇÐ»»
+002A                 684                     TASK_SWITCH_6:                                                  ;¿ªÊ¼ÈÎÎñÇÐ
+                             »»
+                     685                     SAVE_CONTEXT                                                    ;±£´æÉÏÎÄ
+                     706                     LOAD_NEXT_PRIO                                                  ;ÓÅÏÈ¼¶±£´æ
+                     711                     RESTORE_CONTEXT                                                 ;»Ö¸´ÏÂÎÄ
+007A                 727                     TASK_BACK_6:                                                    ;ÈÎÎñ²»ÓÃÇÐ
+                             »»Ö±½Ó·µ»Ø
+                     728                     POP_ALL_REG                                                             ;µ¯
+                             Õ»»Ö¸´
+                     742                     ENABLE_ALL_INT                                                          ;´ò
+                             ¿ªÖÐ¶Ï
+                     744     
+0096 32              745     RETI
+                     746     
+0097                 747     DPTR_SHIFT:                                                                             ;DP
+                             TRÉÏÒÆº¯Ê¡£
+                     748                                                                                                
+                                  ;²ÎÊ£ºÆ«ÒÆÁ¿£¨0xr6r7£©,dptrÐèÒªÆ«ÒÆµÄµØÖ·
+0097 C0E0            749             PUSH    ACC
+0099 C3              750             CLR             C
+009A E582            751             MOV             A,DPL
+009C 2507            752             ADD             A,AR7
+009E F582            753             MOV             DPL,A
+00A0 E583            754             MOV             A,DPH
+00A2 3506            755             ADDC    A,AR6
+00A4 F583            756             MOV             DPH,A
+00A6 D0E0            757             POP             ACC
+00A8 22              758     RET
+                     759     
+00A9                 760     GET_REG_GROUP_ADDR:                                                             ;»ñÈ¡CPU¼Ä´
+                             æÆ÷×éµÄÖ¸Õë¡£
+                     761                                                                                                
+                                  ;²ÎÊ£ºÎÞ
+00A9 C0E0            762             PUSH    ACC
+00AB C0F0            763             PUSH    B
+00AD C006            764             PUSH    AR6
+00AF C007            765             PUSH    AR7
+00B1 E500     F      766             MOV             A,OS_RegSize
+00B3 8500F0   F      767             MOV             B,OS_CurTaskNum
+00B6 A4              768             MUL             AB
+00B7 85F006          769             MOV             AR6,B
+00BA F507            770             MOV             AR7,A
+00BC 900000   F      771             MOV             DPTR,#OS_TaskRegGroup
+00BF 120000   F      772             LCALL   DPTR_SHIFT
+00C2 D007            773             POP             AR7
+00C4 D006            774             POP             AR6
+00C6 D0F0            775             POP             B
+00C8 D0E0            776             POP             ACC
+00CA 22              777     RET
+                     778     
+00CB                 779     COPY_DATA_TOX:                                                                  ;ÄÚ´æµ½Íâ´å
+                             ¸´ÖÆ¡£
+                     780                                                                                                
+                                  ;²ÎÊ£ºr0Ê×µØÖ·£¬r1´ÎÊ£¬dptrÍâ´æµØÖ·
+00CB C0E0            781             PUSH    ACC
+00CD                 782             LOOP_2:
+00CD E6              783             MOV             A,@R0
+00CE F0              784             MOVX    @DPTR,A
+00CF 08              785             INC             R0
+00D0 A3              786             INC             DPTR
+00D1 D9FA            787             DJNZ    R1,LOOP_2
+00D3 D0E0            788             POP             ACC
+00D5 22              789     RET
+                     790     
+00D6                 791     COPY_DATA_FX:                                                                   ;Íâ´æµ½ÄÚ´æ
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE     8
+
+                             ¸´ÖÆ¡£
+                     792                                                                                                
+                                  ;²ÎÊ£ºr0ÄÚ´æÊ×µØÖ·£¬r1´ÎÊ£¬dptrÍâ´åÊ×µØÖ·
+00D6 C0E0            793             PUSH    ACC
+00D8                 794             LOOP_3:
+00D8 E0              795             MOVX    A,@DPTR
+00D9 F6              796             MOV             @R0,A
+00DA 08              797             INC             R0
+00DB A3              798             INC             DPTR
+00DC D9FA            799             DJNZ    R1,LOOP_3
+00DE D0E0            800             POP             ACC
+00E0 22              801     RET
+                     802     
+00E1                 803     GET_POINT_ARRAY:                                                                ;ÒÔÖ¸ÕëÊ×éÔ
+                             ªËØÎªµØÖ·¡£
+                     804                                                                                                
+                                  ;²ÎÊ£ºÎÞ
+00E1 C0E0            805             PUSH    ACC
+00E3 C0F0            806             PUSH    B
+00E5 C006            807             PUSH    AR6
+00E7 C007            808             PUSH    AR7
+00E9 900000   F      809             MOV             DPTR,#OS_TaskStackAddr
+00EC E500     F      810             MOV             A,OS_CurTaskNum
+00EE 75F002          811             MOV             B,#2
+00F1 A4              812             MUL             AB
+00F2 AEF0            813             MOV             R6,B
+00F4 FF              814             MOV             R7,A
+00F5 120000   F      815             LCALL   DPTR_SHIFT
+00F8 E0              816             MOVX    A,@DPTR
+00F9 C0E0            817             PUSH    ACC
+00FB A3              818             INC             DPTR
+00FC E0              819             MOVX    A,@DPTR
+00FD C0E0            820             PUSH    ACC
+00FF D082            821             POP             DPL
+0101 D083            822             POP             DPH
+0103 D007            823             POP             AR7
+0105 D006            824             POP             AR6
+0107 D0F0            825             POP             B
+0109 D0E0            826             POP             ACC
+010B 22              827     RET
+                     828     
+010C                 829     SAVE_STACK_LENGTH:                                                              ;±£´æ¶ÑÕ»³¤
+                             ¶È¡£
+                     830                                                                                                
+                                  ;²ÎÊ£ºr1¶ÑÕ»³¤¶È
+010C C083            831             PUSH    DPH
+010E C082            832             PUSH    DPL
+0110 C0E0            833             PUSH    ACC
+0112 C006            834             PUSH    AR6
+0114 C007            835             PUSH    AR7
+0116 900000   F      836             MOV             DPTR,#OS_TaskCurLength
+0119 E500     F      837             MOV             A,OS_CurTaskNum
+011B 7E00            838             MOV             R6,#00H
+011D FF              839             MOV             R7,A
+011E 120000   F      840             LCALL   DPTR_SHIFT
+0121 E9              841             MOV             A,R1
+0122 F0              842             MOVX    @DPTR,A
+0123 D007            843             POP             AR7
+0125 D006            844             POP             AR6
+0127 D0E0            845             POP             ACC
+0129 D082            846             POP             DPL
+012B D083            847             POP             DPH
+012D 22              848     RET
+                     849     
+012E                 850     GET_STACK_LENGTH:                                                               ;»ñÈ¡¶ÑÕ»³¤
+                             ¶È¡£
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE     9
+
+                     851                                                                                                
+                                  ;²ÎÊ£ºÎÞ£¬
+                     852                                                                                                
+                                  ;·µ»Ør1¶ÑÕ»³¤¶È
+012E C083            853             PUSH    DPH
+0130 C082            854             PUSH    DPL
+0132 C0E0            855             PUSH    ACC
+0134 C006            856             PUSH    AR6
+0136 C007            857             PUSH    AR7
+0138 900000   F      858             MOV             DPTR,#OS_TaskCurLength
+013B E500     F      859             MOV             A,OS_CurTaskNum
+013D 7E00            860             MOV             R6,#00H
+013F FF              861             MOV             R7,A
+0140 120000   F      862             LCALL   DPTR_SHIFT
+0143 E0              863             MOVX    A,@DPTR
+0144 F9              864             MOV             R1,A
+0145 D007            865             POP             AR7
+0147 D006            866             POP             AR6
+0149 D0E0            867             POP             ACC
+014B D082            868             POP             DPL
+014D D083            869             POP             DPH
+014F 22              870     RET
+                     871     
+0150                 872     FIND_NEXT_TASK:                                                                 ;Ñ°ÕÒ×î¸ßÓÅ
+                             ÏÈ¼¶ÈÎÎñ¡£
+                     873                                                                                                
+                                  ;²ÎÊ£ºÎÞ¡£
+                     874                                                                                                
+                                  ;·µ»ØOS_NexTaskNum
+0150 C082            875             PUSH    DPL
+0152 C083            876             PUSH    DPH
+0154 C000            877             PUSH    AR0
+0156 C001            878             PUSH    AR1
+0158 C0E0            879             PUSH    ACC
+015A C0F0            880             PUSH    B
+015C 900000   F      881             MOV             DPTR,#OS_TaskReadyList
+015F A800     F      882             MOV             R0,OsMaxNumOfTask
+0161 E8              883             MOV             A,R0
+0162 8500F0   F      884             MOV             B,OsCpuCharSize
+0165 84              885             DIV             AB
+0166 04              886             INC             A
+0167 F8              887             MOV             R0,A
+0168                 888             LOOP_MAIN:
+0168 E0              889             MOVX    A,@DPTR
+0169 6014            890             JZ              LOOP_4
+016B C3              891             CLR             C
+016C A900     F      892             MOV             R1,OsCpuCharSize
+016E                 893             LOOP_SELF:
+016E 13              894             RRC             A
+016F 4002            895             JC              LOOP_5
+0171 D9FB            896             DJNZ    R1,LOOP_SELF
+0173                 897             LOOP_5:
+0173 E500     F      898             MOV             A,OsCpuCharSize
+0175 C3              899             CLR             C
+0176 99              900             SUBB    A,R1
+0177 88F0            901             MOV             B,R0
+0179 A4              902             MUL             AB
+017A F500     F      903             MOV             OS_NexTaskNum,A
+017C 020000   F      904             LJMP    END_LOOP
+017F                 905             LOOP_4:
+017F D804            906             DJNZ    R0,END_LOOP
+0181 A3              907             INC             DPTR
+0182 020000   F      908             LJMP    LOOP_MAIN
+0185                 909             END_LOOP:
+0185 D0F0            910             POP             B
+0187 D0E0            911             POP             ACC
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE    10
+
+0189 D001            912             POP             AR1
+018B D000            913             POP             AR0
+018D D083            914             POP             DPH
+018F D082            915             POP             DPL
+0191 22              916     RET
+                     917     END
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE    11
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                       T Y P E  V A L U E   ATTRIBUTES
+
+?C?PSTPTR. . . . . . . . . .  C ADDR   -----       EXT
+?PR?EXTERN_0_INT_?OS_ASM . .  C SEG    0097H       REL=UNIT
+?PR?EXTERN_1_INT_?OS_ASM . .  C SEG    0097H       REL=UNIT
+?PR?OS_TASKSWITCH?OS_ASM . .  C SEG    0097H       REL=UNIT
+?PR?OS_TASKSWITCH_ISR?OS_ASM  C SEG    009DH       REL=UNIT
+?PR?SERIAL_INT_?OS_ASM . . .  C SEG    0097H       REL=UNIT
+?PR?TIMER_1_INT_?OS_ASM. . .  C SEG    0192H       REL=UNIT
+AC . . . . . . . . . . . . .  B ADDR   00D0H.6 A   
+ACC. . . . . . . . . . . . .  D ADDR   00E0H   A   
+AR0. . . . . . . . . . . . .  D ADDR   0000H   A   
+AR1. . . . . . . . . . . . .  D ADDR   0001H   A   
+AR2. . . . . . . . . . . . .  D ADDR   0002H   A   
+AR3. . . . . . . . . . . . .  D ADDR   0003H   A   
+AR4. . . . . . . . . . . . .  D ADDR   0004H   A   
+AR5. . . . . . . . . . . . .  D ADDR   0005H   A   
+AR6. . . . . . . . . . . . .  D ADDR   0006H   A   
+AR7. . . . . . . . . . . . .  D ADDR   0007H   A   
+B. . . . . . . . . . . . . .  D ADDR   00F0H   A   
+COPY_DATA_FX . . . . . . . .  C ADDR   00D6H   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+COPY_DATA_TOX. . . . . . . .  C ADDR   00CBH   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+CPU_XDATA_P_SIZE . . . . . .  N NUMB   0002H   A   
+CP_RL2 . . . . . . . . . . .  B ADDR   00C8H.0 A   
+CY . . . . . . . . . . . . .  B ADDR   00D0H.7 A   
+C_T2 . . . . . . . . . . . .  B ADDR   00C8H.1 A   
+DPH. . . . . . . . . . . . .  D ADDR   0083H   A   
+DPL. . . . . . . . . . . . .  D ADDR   0082H   A   
+DPTR_SHIFT . . . . . . . . .  C ADDR   0097H   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+EA . . . . . . . . . . . . .  B ADDR   00A8H.7 A   
+END_LOOP . . . . . . . . . .  C ADDR   0185H   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+ES . . . . . . . . . . . . .  B ADDR   00A8H.4 A   
+ET0. . . . . . . . . . . . .  B ADDR   00A8H.1 A   
+ET1. . . . . . . . . . . . .  B ADDR   00A8H.3 A   
+ET2. . . . . . . . . . . . .  B ADDR   00A8H.5 A   
+EX0. . . . . . . . . . . . .  B ADDR   00A8H.0 A   
+EX1. . . . . . . . . . . . .  B ADDR   00A8H.2 A   
+EXEN2. . . . . . . . . . . .  B ADDR   00C8H.3 A   
+EXF2 . . . . . . . . . . . .  B ADDR   00C8H.6 A   
+EXTERN_0_INT . . . . . . . .  C ADDR   -----       EXT
+EXTERN_0_INT_. . . . . . . .  C ADDR   0000H   R   SEG=?PR?EXTERN_0_INT_?OS_ASM
+EXTERN_1_INT . . . . . . . .  C ADDR   -----       EXT
+EXTERN_1_INT_. . . . . . . .  C ADDR   0000H   R   SEG=?PR?EXTERN_1_INT_?OS_ASM
+F0 . . . . . . . . . . . . .  B ADDR   00D0H.5 A   
+FIND_NEXT_TASK . . . . . . .  C ADDR   0150H   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+GET_POINT_ARRAY. . . . . . .  C ADDR   00E1H   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+GET_REG_GROUP_ADDR . . . . .  C ADDR   00A9H   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+GET_STACK_LENGTH . . . . . .  C ADDR   012EH   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+IE . . . . . . . . . . . . .  D ADDR   00A8H   A   
+IE0. . . . . . . . . . . . .  B ADDR   0088H.1 A   
+IE1. . . . . . . . . . . . .  B ADDR   0088H.3 A   
+INT0 . . . . . . . . . . . .  B ADDR   00B0H.2 A   
+INT1 . . . . . . . . . . . .  B ADDR   00B0H.3 A   
+IP . . . . . . . . . . . . .  D ADDR   00B8H   A   
+IT0. . . . . . . . . . . . .  B ADDR   0088H.0 A   
+IT1. . . . . . . . . . . . .  B ADDR   0088H.2 A   
+LOOP_2 . . . . . . . . . . .  C ADDR   00CDH   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+LOOP_3 . . . . . . . . . . .  C ADDR   00D8H   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+LOOP_4 . . . . . . . . . . .  C ADDR   017FH   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+LOOP_5 . . . . . . . . . . .  C ADDR   0173H   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+LOOP_MAIN. . . . . . . . . .  C ADDR   0168H   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+LOOP_SELF. . . . . . . . . .  C ADDR   016EH   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE    12
+
+OSCPUCHARSIZE. . . . . . . .  D ADDR   -----       EXT
+OSMAXNUMOFTASK . . . . . . .  D ADDR   -----       EXT
+OS_ASM . . . . . . . . . . .  N NUMB   -----       
+OS_CURTASKNUM. . . . . . . .  D ADDR   -----       EXT
+OS_NEXTASKNUM. . . . . . . .  D ADDR   -----       EXT
+OS_REGSIZE . . . . . . . . .  D ADDR   -----       EXT
+OS_SPDEFAULTVALUE. . . . . .  D ADDR   -----       EXT
+OS_TASKCURLENGTH . . . . . .  X ADDR   -----       EXT
+OS_TASKREADYLIST . . . . . .  X ADDR   -----       EXT
+OS_TASKREGGROUP. . . . . . .  X ADDR   -----       EXT
+OS_TASKSTACKADDR . . . . . .  X ADDR   -----       EXT
+OS_TASKSTATUS. . . . . . . .  X ADDR   -----       EXT
+OS_TASKSWITCH. . . . . . . .  C ADDR   0000H   R   SEG=?PR?OS_TASKSWITCH?OS_ASM
+OS_TASKSWITCH_ISR. . . . . .  C ADDR   0000H   R   SEG=?PR?OS_TASKSWITCH_ISR?OS_ASM
+OV . . . . . . . . . . . . .  B ADDR   00D0H.2 A   
+P. . . . . . . . . . . . . .  B ADDR   00D0H.0 A   
+P0 . . . . . . . . . . . . .  D ADDR   0080H   A   
+P1 . . . . . . . . . . . . .  D ADDR   0090H   A   
+P2 . . . . . . . . . . . . .  D ADDR   00A0H   A   
+P3 . . . . . . . . . . . . .  D ADDR   00B0H   A   
+PCON . . . . . . . . . . . .  D ADDR   0087H   A   
+PS . . . . . . . . . . . . .  B ADDR   00B8H.4 A   
+PSW. . . . . . . . . . . . .  D ADDR   00D0H   A   
+PT0. . . . . . . . . . . . .  B ADDR   00B8H.1 A   
+PT1. . . . . . . . . . . . .  B ADDR   00B8H.3 A   
+PT2. . . . . . . . . . . . .  B ADDR   00B8H.5 A   
+PX0. . . . . . . . . . . . .  B ADDR   00B8H.0 A   
+PX1. . . . . . . . . . . . .  B ADDR   00B8H.2 A   
+RB8. . . . . . . . . . . . .  B ADDR   0098H.2 A   
+RCAP2H . . . . . . . . . . .  D ADDR   00CBH   A   
+RCAP2L . . . . . . . . . . .  D ADDR   00CAH   A   
+RCLK . . . . . . . . . . . .  B ADDR   00C8H.5 A   
+RD . . . . . . . . . . . . .  B ADDR   00B0H.7 A   
+REN. . . . . . . . . . . . .  B ADDR   0098H.4 A   
+RI . . . . . . . . . . . . .  B ADDR   0098H.0 A   
+RS0. . . . . . . . . . . . .  B ADDR   00D0H.3 A   
+RS1. . . . . . . . . . . . .  B ADDR   00D0H.4 A   
+RXD. . . . . . . . . . . . .  B ADDR   00B0H.0 A   
+SAVE_STACK_LENGTH. . . . . .  C ADDR   010CH   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+SBUF . . . . . . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . . . . . . .  D ADDR   0098H   A   
+SERIAL_INT . . . . . . . . .  C ADDR   -----       EXT
+SERIAL_INT_. . . . . . . . .  C ADDR   0000H   R   SEG=?PR?SERIAL_INT_?OS_ASM
+SM0. . . . . . . . . . . . .  B ADDR   0098H.7 A   
+SM1. . . . . . . . . . . . .  B ADDR   0098H.6 A   
+SM2. . . . . . . . . . . . .  B ADDR   0098H.5 A   
+SP . . . . . . . . . . . . .  D ADDR   0081H   A   
+SPEED_CONTROL_1. . . . . . .  B ADDR   0090H.0 A   
+SPEED_CONTROL_2. . . . . . .  B ADDR   0090H.1 A   
+SPEED_CONTROL_3. . . . . . .  B ADDR   0090H.2 A   
+SWITCH_MONITORING. . . . . .  B ADDR   00A0H.7 A   
+SWITCH_REMOTE_CONTROL. . . .  B ADDR   00A0H.6 A   
+T0 . . . . . . . . . . . . .  B ADDR   00B0H.4 A   
+T1 . . . . . . . . . . . . .  B ADDR   00B0H.5 A   
+T2 . . . . . . . . . . . . .  B ADDR   0090H.0 A   
+T2CON. . . . . . . . . . . .  D ADDR   00C8H   A   
+T2EX . . . . . . . . . . . .  B ADDR   0090H.1 A   
+TASKSWITCH_HOOK. . . . . . .  C ADDR   -----       EXT
+TASK_BACK_1. . . . . . . . .  C ADDR   007AH   R   SEG=?PR?OS_TASKSWITCH?OS_ASM
+TASK_BACK_2. . . . . . . . .  C ADDR   0080H   R   SEG=?PR?OS_TASKSWITCH_ISR?OS_ASM
+TASK_BACK_3. . . . . . . . .  C ADDR   007AH   R   SEG=?PR?EXTERN_0_INT_?OS_ASM
+TASK_BACK_4. . . . . . . . .  C ADDR   007AH   R   SEG=?PR?EXTERN_1_INT_?OS_ASM
+TASK_BACK_5. . . . . . . . .  C ADDR   007AH   R   SEG=?PR?SERIAL_INT_?OS_ASM
+TASK_BACK_6. . . . . . . . .  C ADDR   007AH   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+TASK_SWITCH_1. . . . . . . .  C ADDR   002AH   R   SEG=?PR?OS_TASKSWITCH?OS_ASM
+TASK_SWITCH_2. . . . . . . .  C ADDR   0030H   R   SEG=?PR?OS_TASKSWITCH_ISR?OS_ASM
+A51 MACRO ASSEMBLER  OS_ASM                                                               05/12/2015 20:18:28 PAGE    13
+
+TASK_SWITCH_3. . . . . . . .  C ADDR   002AH   R   SEG=?PR?EXTERN_0_INT_?OS_ASM
+TASK_SWITCH_4. . . . . . . .  C ADDR   002AH   R   SEG=?PR?EXTERN_1_INT_?OS_ASM
+TASK_SWITCH_5. . . . . . . .  C ADDR   002AH   R   SEG=?PR?SERIAL_INT_?OS_ASM
+TASK_SWITCH_6. . . . . . . .  C ADDR   002AH   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+TB8. . . . . . . . . . . . .  B ADDR   0098H.3 A   
+TCLK . . . . . . . . . . . .  B ADDR   00C8H.4 A   
+TCON . . . . . . . . . . . .  D ADDR   0088H   A   
+TF0. . . . . . . . . . . . .  B ADDR   0088H.5 A   
+TF1. . . . . . . . . . . . .  B ADDR   0088H.7 A   
+TF2. . . . . . . . . . . . .  B ADDR   00C8H.7 A   
+TH0. . . . . . . . . . . . .  D ADDR   008CH   A   
+TH0_RELOAD . . . . . . . . .  D ADDR   -----       EXT
+TH1. . . . . . . . . . . . .  D ADDR   008DH   A   
+TH2. . . . . . . . . . . . .  D ADDR   00CDH   A   
+TI . . . . . . . . . . . . .  B ADDR   0098H.1 A   
+TICKTASK . . . . . . . . . .  C ADDR   -----       EXT
+TIMER_1_INT. . . . . . . . .  C ADDR   -----       EXT
+TIMER_1_INT_ . . . . . . . .  C ADDR   0000H   R   SEG=?PR?TIMER_1_INT_?OS_ASM
+TL0. . . . . . . . . . . . .  D ADDR   008AH   A   
+TL0_RELOAD . . . . . . . . .  D ADDR   -----       EXT
+TL1. . . . . . . . . . . . .  D ADDR   008BH   A   
+TL2. . . . . . . . . . . . .  D ADDR   00CCH   A   
+TMOD . . . . . . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . . . . . . .  B ADDR   0088H.4 A   
+TR1. . . . . . . . . . . . .  B ADDR   0088H.6 A   
+TR2. . . . . . . . . . . . .  B ADDR   00C8H.2 A   
+TXD. . . . . . . . . . . . .  B ADDR   00B0H.1 A   
+WR . . . . . . . . . . . . .  B ADDR   00B0H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

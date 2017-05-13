@@ -1,0 +1,7 @@
+".\mess\Int.obj",
+".\mess\OS.obj",
+".\mess\Hook.obj",
+".\mess\APP.obj",
+".\mess\OS_ASM.obj" 
+TO ".\mess\ZOS-I" 
+PRINT(".\ZOS-I.m51") RAMSIZE(256) 
